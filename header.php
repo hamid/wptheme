@@ -18,6 +18,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+    
+    ooooooo<br>
+ooooooo<br>ooooooo<br>ooooooo<br>ooooooo<br>ooooooo<br>ooooooo<br>ooooooo<br>
+    
+    
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'store' ); ?></a>
 	<div id="jumbosearch">

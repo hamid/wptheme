@@ -14,8 +14,8 @@ class ThemeGitHubUpdater {
     
     
     function __construct( $pluginFile, $gitHubUsername, $gitHubProjectName, $accessToken = '' ) {
-        add_filter( "pre_set_site_transient_update_plugins", array( $this, "setTransitent" ) );
-        add_filter( "plugins_api", array( $this, "setPluginInfo" ), 10, 3 );
+        add_filter( "pre_set_site_transient_update_themes", array( $this, "setTransitent" ) );
+        add_filter( "themes_api", array( $this, "setPluginInfo" ), 10, 3 );
         add_filter( "upgrader_post_install", array( $this, "postInstall" ), 10, 3 );
  
         $this->pluginFile = $pluginFile;
@@ -30,8 +30,10 @@ class ThemeGitHubUpdater {
  
     // Get information regarding our plugin from WordPress
     private function initPluginData() {
-        $this->slug = plugin_basename( $this->pluginFile );
-        $this->pluginData = get_plugin_data( $this->pluginFile );
+        $theme = wp_get_theme();
+        $this->slug = $theme->get( 'template' );
+        $this->pluginData = (array)$theme;
+        
     }
     
     
@@ -85,7 +87,12 @@ class ThemeGitHubUpdater {
         $this->getRepoReleaseInfo();
         
         // Check the versions if we need to do an update
-        $doUpdate = version_compare( $this->githubAPIResult->tag_name, $transient->checked[$this->slug] );
+        $theme = wp_get_theme();
+        $theme_version = $theme->get( 'Version' );
+        
+        
+        //$doUpdate = version_compare( $this->githubAPIResult->tag_name, $transient->checked[$this->slug] );
+        $doUpdate = version_compare( $this->githubAPIResult->tag_name, $theme_version );
         
         // Update the transient to include our updated plugin data
         if ( $doUpdate == 1 )
@@ -97,12 +104,14 @@ class ThemeGitHubUpdater {
                 $package = add_query_arg( array( "access_token" => $this->accessToken ), $package );
             }
 
-            $obj = new stdClass();
-            $obj->slug = $this->slug;
-            $obj->new_version = $this->githubAPIResult->tag_name;
-            $obj->url = $this->pluginData["PluginURI"];
-            $obj->package = $package;
+            $obj                = array();
+            $obj['slug']        = $this->slug;
+            $obj['new_version'] = $this->githubAPIResult->tag_name;
+            $obj['url']         = $this->pluginData["PluginURI"];
+            $obj['package']     = $package;
             $transient->response[$this->slug] = $obj;
+            
+         //   var_dump($transient->response);
         }
 
         return $transient;
@@ -115,6 +124,7 @@ class ThemeGitHubUpdater {
     // Push in plugin version information to display in the details lightbox
     public function setPluginInfo( $false, $action, $response )
     {
+        
         // Get plugin & GitHub release information
         $this->initPluginData();
         $this->getRepoReleaseInfo();
@@ -129,8 +139,8 @@ class ThemeGitHubUpdater {
         $response->slug = $this->slug;
         $response->plugin_name  = $this->pluginData["Name"];
         $response->version = $this->githubAPIResult->tag_name;
-        $response->author = $this->pluginData["AuthorName"];
-        $response->homepage = $this->pluginData["PluginURI"];
+        $response->author = $this->pluginData["Author"];
+        $response->homepage = $this->pluginData["ThemeURI"];
 
         // This is our release download zip file
         $downloadLink = $this->githubAPIResult->zipball_url;
