@@ -1,0 +1,132 @@
+/*
+Theme Name: Store
+Theme URI: https://hamyarwp.com/store
+Author: HAMYARWP
+Author URI: https://hamyarwp.com/
+*/
+@font-face {
+    font-family: 'Yekan';
+    src: url('font/WebYekan.eot');
+    src: url('font/WebYekan.eot?#iefix') format('embedded-opentype'),
+         url('font/WebYekan.woff') format('woff'),
+         url('font/WebYekan.ttf') format('truetype'),
+         url('font/WebYekan.svg#WebYekan') format('svg');
+}
+
+.title-font {
+    font-family: Yekan;
+}
+body {
+    font-family: Yekan;
+    font-size: 16px;
+}
+#secondary .widget ul {
+    font-size: 16px;
+}
+.site-branding {
+    float: right;
+}
+.main-navigation li {
+    float: right;
+}
+@media screen and (min-width: 992px) {
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: right;
+}
+#top-menu {
+    float: left;
+}
+#top-bar .social-icons {
+    float: left;
+}
+#top-search {
+    float: left;
+}
+#top-cart {
+    float: left;
+}
+}
+#top-cart .cart-contents {
+    margin-left: 0px;
+    float: left;
+}
+#top-cart i {
+    float: left;
+    margin-left: 10px;
+}
+.woocommerce ul.cart_list li img, .woocommerce ul.product_list_widget li img {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0px;
+}
+#secondary .widget_store_rp .rp-thumb {
+    float: right;
+    margin-right: 0px;
+    margin-left: 5px;
+}
+#secondary .widget_recent_entries ul li::before, #secondary .widget_recent_comments ul li::before, #secondary .widget_categories ul li::before, #secondary .widget_pages ul li::before, #secondary .widget_archive ul li::before, #secondary .widget_meta ul li::before, #secondary .widget_nav_menu ul li::before {
+    content: "\f053";
+    font-family: "FontAwesome";
+    color: #b7b7b7;
+    font-size: 10px;
+    margin-right: 0px;
+    margin-left: 5px;
+}
+#footer-sidebar .footer-column .widget_store_rp .rp-thumb {
+    float: right;
+    margin-right: 0px;
+    margin-left: 5px;
+}
+#footer-sidebar .footer-column .widget_recent_entries ul li::before, #footer-sidebar .footer-column .widget_recent_comments ul li::before, #footer-sidebar .footer-column .widget_categories ul li::before, #footer-sidebar .footer-column .widget_pages ul li::before, #footer-sidebar .footer-column .widget_archive ul li::before, #footer-sidebar .footer-column .widget_meta ul li::before, #footer-sidebar .footer-column .widget_nav_menu ul li::before {
+    content: "\f053";
+    font-family: "FontAwesome";
+    margin-right: 0px;
+    margin-left: 3px;
+}
+#site-navigation ul li ul.sub-menu a, #site-navigation ul li ul.children a {
+    text-align: right;
+}
+#site-navigation ul li ul.sub-menu li ul, #site-navigation ul li ul.children li ul {
+    right: 100%;
+    left: auto;
+}
+#comments .comment-metadata time {
+    float: left;
+}
+#respond .comment-form-author label, #respond .comment-form-email label, #respond .comment-form-url label, #respond .comment-form-comment label {
+    background: #42a1cd;
+    color: #f7f5ee;
+    border-bottom: solid 1px #42a1cd;
+    padding: 10px;
+    margin-right: 0px;
+    min-width: 45px;
+}
+.woocommerce .woocommerce-breadcrumb {
+    text-align: right;
+}
+.fa-angle-right::before {
+    content: "\f104";
+}
+.woocommerce div.product form.cart div.quantity {
+    float: right;
+    margin: 0px 0px 0 5px;
+}
+.woocommerce div.product form.cart .button {
+    float: right;
+}
+.woocommerce .woocommerce-message .button, .woocommerce .woocommerce-error .button, .woocommerce .woocommerce-info .button {
+    float: left;
+}
+th {
+    text-align: center;
+}
+caption, th, td {
+    font-weight: normal;
+    text-align: center;
+}
+@media screen and (max-width: 600px)
+{
+.slicknav_nav a {
+    text-align: right;
+}
+}
