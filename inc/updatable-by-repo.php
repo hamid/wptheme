@@ -31,7 +31,7 @@ class ThemeGitHubUpdater {
     // Get information regarding our plugin from WordPress
     private function initPluginData() {
         $theme = wp_get_theme();
-        $this->slug = $theme->get( 'template' );
+        $this->slug = $theme->get( 'Name' );
         $this->pluginData = (array)$theme;
         
     }
@@ -106,8 +106,9 @@ class ThemeGitHubUpdater {
 
             $obj                = array();
             $obj['slug']        = $this->slug;
+            $obj['theme']       = $this->slug;
             $obj['new_version'] = $this->githubAPIResult->tag_name;
-            $obj['url']         = $this->pluginData["PluginURI"];
+            $obj['url']         = $this->pluginData["ThemeURI"];
             $obj['package']     = $package;
             $transient->response[$this->slug] = $obj;
             
